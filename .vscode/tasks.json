@@ -9,8 +9,9 @@
             "args": [
                 "-g", 
                 "src/main.cpp",
-                //"src/HS_operator.cpp" ,
-                //"src/fitness.cpp",
+                "src/operator.cpp" ,
+                "src/fitness.cpp",
+                "src/Class.cpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ]
