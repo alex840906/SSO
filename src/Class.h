@@ -11,19 +11,18 @@ using namespace std;
 class Spider
 {
 private:
-
     vec_1D loc;
-    vec_1D position;
+    vec_1D solution;
     vector<vector<float>> vibration;
     float fitnessValue;
     float weight;
 
 public:
-    int  a = 9;
-    void calculateWeight(float,float,float);
-    void vibrationModel(vector<Spider>);
+    void calculateWeight(float, float, float);
+    void vibrationModel(vector<Spider>,vector<Spider>);
     void printSolution();
-
+    void femaleCooperation();
+    void maleCooperation();
 
     Spider(); //建構子
 };
