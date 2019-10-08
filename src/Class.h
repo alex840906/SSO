@@ -6,11 +6,26 @@
 #include <stdio.h>
 #include "SSO_ARG.h"
 
+using namespace std;
+
 class Spider
 {
-    private:
+private:
 
-    public:
+    vec_1D loc;
+    vec_1D position;
+    vector<vector<float>> vibration;
+    float fitnessValue;
+    float weight;
+
+public:
+    int  a = 9;
+    void calculateWeight(float,float,float);
+    void vibrationModel(vector<Spider>);
+    void printSolution();
+
+
+    Spider(); //建構子
 };
 
 #endif

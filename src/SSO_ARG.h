@@ -2,6 +2,7 @@
 #define SSO_ARG_H
 
 #define spiderNum 10
+#define solutionSize 100
 
 
 #include <iostream>
