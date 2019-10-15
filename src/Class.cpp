@@ -1,7 +1,5 @@
 #include "Class.h"
 
-vector<Spider> femaleSpiderList(femaleSpider); //Use vector to construct Spider
-vector<Spider> maleSpiderList(maleSpider); //Use vector to construct Spider
 
 
 Spider::Spider()
@@ -20,11 +18,11 @@ void Spider::calculateWeight(float bestS, float worstS, float currentS)
     this->weight = (currentS - worstS) / (bestS - worstS);
 }
 
-void Spider::vibrationModel(vector<Spider> femaleSpiderList, vector<Spider> maleSpiderList)
+void Spider::vibrationModel(vector<Spider> spiderList)
 {
-    for(int i=0;i<femaleSpider;i++)
+    for (int i = 0; i < femaleSpider; i++)
     {
-       this->vibration[i] = femaleSpiderList[i].weight;
+        this->vibration[i] = femaleSpiderList[i].weight;
     }
 }
 void Spider::printSolution()
@@ -35,17 +33,19 @@ void Spider::printSolution()
 
 void Spider::femaleCooperation()
 {
-    float probibility = (double) rand() / (RAND_MAX + 1);
+    float probibility = (double)rand() / (RAND_MAX + 1);
+    float alpha, beta, gamma;
+    alpha = (double)rand() / (RAND_MAX + 1);
+    beta = (double)rand() / (RAND_MAX + 1);
+    gamma = (double)rand() / (RAND_MAX + 1);
 
-    if(probibility < PF)
+    if (probibility < PF)
     {
-
     }
     else
     {
         /* code */
     }
-    
 }
 
 void Spider::maleCooperation()

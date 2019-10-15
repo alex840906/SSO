@@ -8,23 +8,29 @@
 
 using namespace std;
 
+
+
 class Spider
 {
 private:
     vec_1D loc;
     vec_1D solution;
-    vector<vector<float>> vibration;
+    vector<float> vibration;
     float fitnessValue;
     float weight;
 
 public:
     void calculateWeight(float, float, float);
-    void vibrationModel(vector<Spider>,vector<Spider>);
+    void vibrationModel(vector<Spider>);
     void printSolution();
     void femaleCooperation();
     void maleCooperation();
 
     Spider(); //建構子
 };
+
+inline vector<Spider> femaleSpiderList(femaleSpider); //Use vector to construct Spider
+inline vector<Spider> maleSpiderList(maleSpider);     //Use vector to construct Spider
+inline Spider bestSpider;
 
 #endif
