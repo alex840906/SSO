@@ -1,9 +1,20 @@
 #include "Class.h"
 
+Spider::Spider(bool gender)
+{
+    this->gender = gender;
+    vibration.resize(spiderNum);
+    solution.resize(solutionSize);
 
+    for (int i = 0; i < solutionSize; i++)
+    {
+        solution[i] = rand() % 2;
+    }
+}
 
 Spider::Spider()
 {
+    //this->gender = gender;
     vibration.resize(spiderNum);
     solution.resize(solutionSize);
 
@@ -51,3 +62,4 @@ void Spider::femaleCooperation()
 void Spider::maleCooperation()
 {
 }
+

@@ -8,8 +8,6 @@
 
 using namespace std;
 
-
-
 class Spider
 {
 private:
@@ -18,6 +16,7 @@ private:
     vector<float> vibration;
     float fitnessValue;
     float weight;
+    
 
 public:
     void calculateWeight(float, float, float);
@@ -25,12 +24,13 @@ public:
     void printSolution();
     void femaleCooperation();
     void maleCooperation();
-
-    Spider(); //建構子
+    bool gender;
+    Spider(bool); //建構子
+    Spider();
 };
 
-inline vector<Spider> femaleSpiderList(femaleSpider); //Use vector to construct Spider
-inline vector<Spider> maleSpiderList(maleSpider);     //Use vector to construct Spider
+inline vector<Spider> femaleSpiderList(femaleSpider, Spider(1)); //Use vector to construct Spider
+inline vector<Spider> maleSpiderList(maleSpider,Spider(0));     //Use vector to construct Spider
 inline Spider bestSpider;
 
 #endif
