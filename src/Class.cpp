@@ -3,7 +3,7 @@
 Spider::Spider(bool gender)
 {
     this->gender = gender;
-    vibration.resize(spiderNum);
+    //vibration.resize(spiderNum);
     solution.resize(solutionSize);
 
     for (int i = 0; i < solutionSize; i++)
@@ -15,7 +15,7 @@ Spider::Spider(bool gender)
 Spider::Spider()
 {
     //this->gender = gender;
-    vibration.resize(spiderNum);
+    //vibration.resize(spiderNum);
     solution.resize(solutionSize);
 
     for (int i = 0; i < solutionSize; i++)
@@ -24,17 +24,33 @@ Spider::Spider()
     }
 }
 
+Spider::NearestSpider::NearestSpider()
+{
+
+}
+
 void Spider::calculateWeight(float bestS, float worstS, float currentS)
 {
     this->weight = (currentS - worstS) / (bestS - worstS);
 }
 
-void Spider::vibrationModel(vector<Spider> spiderList)
+void Spider::vibrationModel(Spider currentSpider)
 {
-    for (int i = 0; i < femaleSpider; i++)
+    if(currentSpider.gender == 1)
     {
-        this->vibration[i] = femaleSpiderList[i].weight;
+        currentSpider.vibb = bestSpider.weight\
+         * exp(-pow((calDistance(currentSpider.loc, bestSpider.loc)),2));
+        
+        currentSpider.vibc = nearestSpider.weight\
+         * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)),2));
     }
+
+    else
+    {
+        currentSpider.vibf = currentSpider.vibc = currentSpider.nearestSpider.weight\
+         * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)),2));
+    }
+    
 }
 void Spider::printSolution()
 {
