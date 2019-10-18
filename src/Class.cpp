@@ -65,9 +65,14 @@ void Spider::femaleCooperation()
     alpha = (double)rand() / (RAND_MAX + 1);
     beta = (double)rand() / (RAND_MAX + 1);
     gamma = (double)rand() / (RAND_MAX + 1);
+    r = (double)rand() / (RAND_MAX + 1);
 
     if (probibility < PF)
     {
+        loc[0] = loc[0] + alpha * vibc * (nearestSpider.loc[0] - loc[0])\
+         + beta * vibb * (bestSpider.loc[0] - loc[0])\
+         + gamma *   
+
     }
     else
     {
