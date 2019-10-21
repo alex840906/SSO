@@ -38,7 +38,6 @@ void Spider::vibrationModel(Spider currentSpider)
     if (currentSpider.gender == 1)
     {
         currentSpider.vibb = bestSpider.weight * exp(-pow((calDistance(currentSpider.loc, bestSpider.loc)), 2));
-
         currentSpider.vibc = nearestSpider.weight * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)), 2));
     }
 
@@ -51,6 +50,22 @@ void Spider::printSolution()
 {
     for (int i = 0; i < solutionSize; i++)
         cout << solution[i];
+}
+
+void Spider::rearrangeMaleSpiderList()
+{
+    for (int i = 0; i < maleSpider-1; i++)
+    {
+        for (int j = 0; j < maleSpider-1; j++)
+        {
+            if (maleSpiderList[j].weight > maleSpiderList[j + 1].weight)
+            {
+                Spider tmp = maleSpiderList[j];
+                maleSpiderList[j] = maleSpiderList[j + 1];
+                maleSpiderList[j+1] = tmp;
+            }
+        }
+    }
 }
 
 void Spider::femaleCooperation()
@@ -84,4 +99,5 @@ void Spider::femaleCooperation()
 
 void Spider::maleCooperation()
 {
+
 }

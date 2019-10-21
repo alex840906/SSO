@@ -33,6 +33,7 @@ private:
     NearestSpider nearestSpider;
 
 public:
+    
     void calculateWeight(float, float, float);
     void vibrationModel(Spider);
     void printSolution();
