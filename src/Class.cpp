@@ -26,7 +26,6 @@ Spider::Spider()
 
 Spider::NearestSpider::NearestSpider()
 {
-
 }
 
 void Spider::calculateWeight(float bestS, float worstS, float currentS)
@@ -36,21 +35,17 @@ void Spider::calculateWeight(float bestS, float worstS, float currentS)
 
 void Spider::vibrationModel(Spider currentSpider)
 {
-    if(currentSpider.gender == 1)
+    if (currentSpider.gender == 1)
     {
-        currentSpider.vibb = bestSpider.weight\
-         * exp(-pow((calDistance(currentSpider.loc, bestSpider.loc)),2));
-        
-        currentSpider.vibc = nearestSpider.weight\
-         * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)),2));
+        currentSpider.vibb = bestSpider.weight * exp(-pow((calDistance(currentSpider.loc, bestSpider.loc)), 2));
+
+        currentSpider.vibc = nearestSpider.weight * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)), 2));
     }
 
     else
     {
-        currentSpider.vibf = currentSpider.vibc = currentSpider.nearestSpider.weight\
-         * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)),2));
+        currentSpider.vibf = currentSpider.vibc = currentSpider.nearestSpider.weight * exp(-pow((calDistance(currentSpider.loc, currentSpider.nearestSpider.loc)), 2));
     }
-    
 }
 void Spider::printSolution()
 {
@@ -61,7 +56,7 @@ void Spider::printSolution()
 void Spider::femaleCooperation()
 {
     float probibility = (double)rand() / (RAND_MAX + 1);
-    float alpha, beta, gamma;
+    float alpha, beta, gamma, r;
     alpha = (double)rand() / (RAND_MAX + 1);
     beta = (double)rand() / (RAND_MAX + 1);
     gamma = (double)rand() / (RAND_MAX + 1);
@@ -69,18 +64,24 @@ void Spider::femaleCooperation()
 
     if (probibility < PF)
     {
-        loc[0] = loc[0] + alpha * vibc * (nearestSpider.loc[0] - loc[0])\
-         + beta * vibb * (bestSpider.loc[0] - loc[0])\
-         + gamma *   
-
+        for (int i = 0; i <= 1; i++)
+        {
+            loc[i] = loc[i] + alpha * vibc * (nearestSpider.loc[i] - loc[i])\
+             + beta * vibb * (bestSpider.loc[i] - loc[i])\
+             + gamma * (r - 0.5);
+        }            
     }
     else
     {
-        /* code */
+        for (int i = 0; i <= 1; i++)
+        {
+            loc[i] = loc[i] - alpha * vibc * (nearestSpider.loc[i] - loc[i])\
+             - beta * vibb * (bestSpider.loc[i] - loc[i])\
+             + gamma * (r - 0.5);
+        }  
     }
 }
 
 void Spider::maleCooperation()
 {
 }
-
