@@ -1,7 +1,7 @@
 #ifndef SSO_ARG_H
 #define SSO_ARG_H
 
-#define spiderNum 10
+#define spiderNum 20
 #define solutionSize 100
 #define PF 0.7
 
@@ -14,7 +14,7 @@ using namespace std;
 typedef vector<int> vec_1D;
 typedef vector<vector<int>> vec_2D;
 
-inline int femaleSpider = (0.9 - (double)rand() / (RAND_MAX + 1) * 0.25) * spiderNum;
+inline int femaleSpider = (0.9 - (((double) rand() / (RAND_MAX)) + 1) * 0.25) * spiderNum;
 inline int maleSpider = spiderNum - femaleSpider;
 
 

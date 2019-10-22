@@ -62,7 +62,7 @@ void Spider::rearrangeMaleSpiderList()
             {
                 Spider tmp = maleSpiderList[j];
                 maleSpiderList[j] = maleSpiderList[j + 1];
-                maleSpiderList[j+1] = tmp;
+                maleSpiderList[j + 1] = tmp;
             }
         }
     }
@@ -72,10 +72,10 @@ void Spider::femaleCooperation()
 {
     float probibility = (double)rand() / (RAND_MAX + 1);
     float alpha, beta, gamma, r;
-    alpha = (double)rand() / (RAND_MAX + 1);
-    beta = (double)rand() / (RAND_MAX + 1);
-    gamma = (double)rand() / (RAND_MAX + 1);
-    r = (double)rand() / (RAND_MAX + 1);
+    alpha = (double)rand() / (RAND_MAX) + 1;
+    beta = (double)rand() / (RAND_MAX) + 1;
+    gamma = (double)rand() / (RAND_MAX) + 1;
+    r = (double)rand() / (RAND_MAX) + 1;
 
     if (probibility < PF)
     {
@@ -99,5 +99,36 @@ void Spider::femaleCooperation()
 
 void Spider::maleCooperation()
 {
+    int medianIndex = maleSpider/2;
+    float alpha, gamma, r;
+    alpha = (double)rand() / (RAND_MAX) + 1;
+    gamma = (double)rand() / (RAND_MAX) + 1;
+    r = (double)rand() / (RAND_MAX) + 1;
+
+    if(weight > maleSpiderList[medianIndex].weight)
+    {
+        for (int i = 0; i <= 1; i++)
+        {
+            loc[i] = loc[i] + alpha * vibf * (nearestSpider.loc[i] - loc[i])\
+             + gamma * (r - 0.5);
+        }   
+    }
+
+    else
+    {     
+        for (int i = 0; i <= 1; i++)
+        {
+            float delta=0, numerator=0, denominator=0;
+
+            for(int j = 0;j<maleSpider;j++)
+            {
+                numerator += maleSpiderList[j].loc[i] * maleSpiderList[j].weight;
+                denominator += maleSpiderList[j].weight;
+            }
+            delta = alpha * (numerator / denominator - loc[i]);
+            loc[i] += delta;
+        }   
+    }
+    
 
 }

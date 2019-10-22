@@ -6,7 +6,14 @@ float calDistance(vec_1D a, vec_1D b)
     return distance;
 }
 
-float calAvgWeight(vector<Spider> )
-{
+// float calAvgWeight(vector<Spider> maleSpiderList)
+// {
+//     float avgWeight;
 
-}
+//     for(int i=0;i<maleSpider;i++)
+//     {
+//         avgWeight += maleSpiderList[i].weight;
+//     }
+//     avgWeight /= maleSpider;
+//     return avgWeight;
+// }

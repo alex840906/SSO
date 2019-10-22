@@ -32,13 +32,13 @@ private:
     };
     NearestSpider nearestSpider;
 
-public:
-    
+public: 
     void calculateWeight(float, float, float);
     void vibrationModel(Spider);
     void printSolution();
     void femaleCooperation();
     void maleCooperation();
+    void rearrangeMaleSpiderList();
     bool gender;
     Spider(bool); //建構子
     Spider();
